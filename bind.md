@@ -18,7 +18,7 @@ int func(int val)
     return val;
 }
 
-typedef int funcptr(int val);
+typedef int (*funcptr)(int); 
 int dllFunc(int val, funcptr callback)
 {
     return callback(val);
@@ -49,7 +49,7 @@ int func(int val)
     return val;
 }
 
-typedef int funcptr(int val);
+typedef int (*funcptr)(int); 
 //55行这里！！！
 using funcCallBack = int (int val);
 int dllFunc(int val, funcptr callback, funcCallBack callback2)
@@ -82,7 +82,7 @@ int func(int val)
     return val;
 }
 
-typedef int funcptr(int val);
+typedef int (*funcptr)(int); 
 using funcCallBack = int (int val);
 int dllFunc(int val, funcptr callback, funcCallBack callback2, std::function<int(int)> callback3)
 {
