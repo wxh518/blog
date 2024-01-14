@@ -51,7 +51,7 @@ int func(int val)
 
 typedef int (*funcptr)(int); 
 //55行这里！！！
-using funcCallBack = int (int val);
+using funcCallBack = int (*) (int val);
 int dllFunc(int val, funcptr callback, funcCallBack callback2)
 {
     int res1 = callback(val);
@@ -83,7 +83,7 @@ int func(int val)
 }
 
 typedef int (*funcptr)(int); 
-using funcCallBack = int (int val);
+using funcCallBack = int (*) (int val);
 int dllFunc(int val, funcptr callback, funcCallBack callback2, std::function<int(int)> callback3)
 {
     int res1 = callback(val);
@@ -110,7 +110,7 @@ C++11提供了std::function这种的模版类，接受一个函数类型，并�
 #include <iostream>
 #include <functional>
 
-using funcCallBack = int (int val, void* pUser);
+using funcCallBack = int (*) (int val, void* pUser);
 int dllFunc(int val, void* pUser, funcCallBack callback, std::function<int(int,void*)> callback2)
 {
     int res1 = callback(val, pUser);
